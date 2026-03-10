@@ -92,12 +92,18 @@ class TestCompressedImage(FitsTestCase):
 
         """
 
+        import urllib.error
+
         np.random.seed(42)
 
         # Basically what scipy.datasets.ascent() does.
-        fname = download_file(
-            "https://github.com/scipy/dataset-ascent/blob/main/ascent.dat?raw=true"
-        )
+        try:
+            fname = download_file(
+                "https://github.com/scipy/dataset-ascent/blob/main/ascent.dat?raw=true"
+            )
+        except urllib.error.URLError as e:
+            pytest.skip(f"Failed to download scipy dataset: {e}")
+
         with open(fname, "rb") as f:
             scipy_data = np.array(pickle.load(f))
 
