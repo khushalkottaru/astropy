@@ -102,6 +102,8 @@ class TestCompressedImage(FitsTestCase):
                 "https://github.com/scipy/dataset-ascent/blob/main/ascent.dat?raw=true"
             )
         except urllib.error.URLError as e:
+            if hasattr(e, "close"):
+                e.close()
             pytest.skip(f"Failed to download scipy dataset: {e}")
 
         with open(fname, "rb") as f:
