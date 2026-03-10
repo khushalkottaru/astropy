@@ -1660,3 +1660,134 @@ if HAS_SCIPY:
                 ),
             ):
                 function(1.0 * u.kg, 3.0 * u.m / u.s)
+
+        # --- newly registered 1-argument ufuncs ---
+        new_onearg_ufuncs = tuple(
+            f
+            for f in (
+                getattr(sps, name, None)
+                for name in (
+                    "bei", "beip", "ber", "berp",
+                    "kei", "keip", "ker", "kerp",
+                    "ellipe", "ellipk", "ellipkm1",
+                    "exp1", "expi",
+                    "expit", "log_expit", "logit",
+                    "it2struve0", "itmodstruve0", "itstruve0",
+                    "kolmogi", "kolmogorov",
+                    "log_ndtr", "ndtri_exp",
+                    "cosm1", "spence", "wrightomega", "zetac",
+                )
+            )
+            if f is not None
+        )
+
+        @pytest.mark.parametrize("function", new_onearg_ufuncs)
+        def test_new_onearg_scalar(self, function):
+            """New 1-arg dimensionless→dimensionless ufuncs work on scalars."""
+            q = function(0.5 * u.m / (1.0 * u.m))
+            assert q.unit == u.dimensionless_unscaled
+
+        @pytest.mark.parametrize("function", new_onearg_ufuncs)
+        def test_new_onearg_invalid_units(self, function):
+            """New 1-arg ufuncs reject non-dimensionless inputs."""
+            with pytest.raises(TypeError):
+                function(1.0 * u.m)
+
+        # --- newly registered 2-argument ufuncs ---
+        new_twoarg_ufuncs = tuple(
+            f
+            for f in (
+                getattr(sps, name, None)
+                for name in (
+                    "agm", "beta", "betaln", "binom",
+                    "gammainc", "gammaincc", "gammainccinv", "gammaincinv",
+                    "eval_legendre", "eval_sh_legendre",
+                    "eval_chebyc", "eval_chebys", "eval_chebyt", "eval_chebyu",
+                    # eval_hermite / eval_hermitenorm need integer first arg;
+                    # skip from float-Quantity parametrization.
+                    "eval_laguerre",
+                    "poch", "expn", "struve", "modstruve",
+                    "xlogy", "xlog1py",
+                    "owens_t", "smirnov",
+                )
+            )
+            if f is not None
+        )
+
+        @pytest.mark.parametrize("function", new_twoarg_ufuncs)
+        def test_new_twoarg_scalar(self, function):
+            """New 2-arg dimensionless→dimensionless ufuncs work on scalars."""
+            q = function(
+                1.0 * u.m / (1.0 * u.m), 2.0 * u.m / (2.0 * u.m)
+            )
+            assert q.unit == u.dimensionless_unscaled
+
+        @pytest.mark.parametrize("function", new_twoarg_ufuncs)
+        def test_new_twoarg_invalid_units(self, function):
+            """New 2-arg ufuncs reject non-dimensionless inputs."""
+            with pytest.raises(TypeError):
+                function(1.0 * u.kg, 3.0 * u.m / u.s)
+
+        # --- newly registered 3-argument ufuncs ---
+        new_threearg_ufuncs = tuple(
+            f
+            for f in (
+                getattr(sps, name, None)
+                for name in (
+                    "betainc", "betaincc",
+                    "lpmv",
+                    "hyp1f1", "hyperu",
+                    "eval_gegenbauer", "eval_genlaguerre",
+                    "voigt_profile",
+                    "wright_bessel",
+                )
+            )
+            if f is not None
+        )
+
+        @pytest.mark.parametrize("function", new_threearg_ufuncs)
+        def test_new_threearg_scalar(self, function):
+            """New 3-arg dimensionless→dimensionless ufuncs work on scalars."""
+            q = function(
+                1.0 * u.m / (1.0 * u.m),
+                1.0 * u.m / (1.0 * u.m),
+                1.0 * u.m / (1.0 * u.m),
+            )
+            assert q.unit == u.dimensionless_unscaled
+
+        @pytest.mark.parametrize("function", new_threearg_ufuncs)
+        def test_new_threearg_invalid_units(self, function):
+            """New 3-arg ufuncs reject non-dimensionless inputs."""
+            with pytest.raises(TypeError):
+                function(1.0 * u.kg, 2.0 * u.m, 3.0 * u.s)
+
+        # --- newly registered 4-argument ufuncs ---
+        new_fourarg_ufuncs = tuple(
+            f
+            for f in (
+                getattr(sps, name, None)
+                for name in (
+                    "hyp2f1",
+                    "eval_jacobi",
+                    "ncfdtr", "ncfdtri",
+                )
+            )
+            if f is not None
+        )
+
+        @pytest.mark.parametrize("function", new_fourarg_ufuncs)
+        def test_new_fourarg_scalar(self, function):
+            """New 4-arg dimensionless→dimensionless ufuncs work on scalars."""
+            q = function(
+                1.0 * u.m / (1.0 * u.m),
+                1.0 * u.m / (1.0 * u.m),
+                1.0 * u.m / (1.0 * u.m),
+                1.0 * u.m / (1.0 * u.m),
+            )
+            assert q.unit == u.dimensionless_unscaled
+
+        @pytest.mark.parametrize("function", new_fourarg_ufuncs)
+        def test_new_fourarg_invalid_units(self, function):
+            """New 4-arg ufuncs reject non-dimensionless inputs."""
+            with pytest.raises(TypeError):
+                function(1.0 * u.kg, 2.0 * u.m, 3.0 * u.s, 4.0 * u.kg)

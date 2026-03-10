@@ -1,0 +1,5 @@
+Added support for many previously missing ``scipy.special`` ufuncs
+(e.g. ``beta``, ``betaln``, ``gammainc``, ``gammaincc``, ``zetac``,
+``eval_legendre``, ``lpmv``, ``hyp2f1``, and dozens more) so that
+``Quantity`` objects with dimensionless units can now be passed directly
+to these functions without raising a ``TypeError``.

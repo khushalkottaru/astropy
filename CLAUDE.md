@@ -104,3 +104,21 @@ Astropy is structured as a collection of semi-independent subpackages under `ast
 - Image comparison tests use `@pytest.mark.mpl_image_compare`.
 - `pytest-doctestplus` runs doctests in `.rst` docs files and module docstrings.
 - `filterwarnings = ["error"]` in `pyproject.toml` means unhandled warnings fail tests.
+
+## Current Work (branch: jules-astropy-6390-scout-report-3136185475435309054)
+
+### Issue #6390 — Missing scipy.special ufuncs for Quantity
+
+**Status: implemented, all tests passing (3973 passed).**
+
+**What was done:**
+- Extended `astropy/units/quantity_helper/scipy_special.py` to register ~100 previously missing `scipy.special` ufuncs as dimensionless-in/dimensionless-out helpers.
+- Added two new helper functions `helper_three_arg_dimensionless` and `helper_four_arg_dimensionless` (modeled on `helper_two_arg_dimensionless` in `helpers.py`).
+- New tuples added: `three_arg_dimensionless_sps_ufuncs`, `four_arg_dimensionless_sps_ufuncs`.
+- `get_scipy_special_helpers()` updated to use safe `getattr(..., None)` for all loops so missing functions in older scipy versions are silently skipped.
+- Tests added in `astropy/units/tests/test_quantity_ufuncs.py` inside `TestScipySpecialUfuncs`.
+- Changelog entry: `docs/changes/units/6390.feature.rst`.
+
+**Key caveat:** `eval_hermite` and `eval_hermitenorm` are registered but require an integer first argument (`'ld->d'` type only); they work as `eval_hermite(2, 0.5 * u.dimensionless_unscaled)` but not with two Quantity args.
+
+**Python environment:** use `.venv/bin/python` and `.venv/bin/pytest` for all commands.
