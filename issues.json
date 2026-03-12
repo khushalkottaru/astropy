@@ -1,0 +1,138 @@
+[
+  {
+    "number": 14837,
+    "title": "Register LaTeX reader for Cosmology",
+    "created_at": "2023-05-17T16:30:21Z",
+    "updated_at": "2026-03-01T02:37:21Z",
+    "assignee": null,
+    "labels": [
+      "Feature Request",
+      "cosmology",
+      "good first issue"
+    ]
+  },
+  {
+    "number": 13539,
+    "title": "Avoid logger info in CCDData.read when unit specifies matches that in FITS file",
+    "created_at": "2022-08-08T10:31:46Z",
+    "updated_at": "2026-02-19T14:36:13Z",
+    "assignee": null,
+    "labels": [
+      "Feature Request",
+      "nddata",
+      "good first issue"
+    ]
+  },
+  {
+    "number": 8860,
+    "title": "Provide a way to enable both quantity_support and time_support in one go",
+    "created_at": "2019-06-16T11:55:36Z",
+    "updated_at": "2026-02-19T02:16:29Z",
+    "assignee": null,
+    "labels": [
+      "Enhancement",
+      "visualization",
+      "good first issue"
+    ]
+  },
+  {
+    "number": 8426,
+    "title": "convolve_fft defaults and documentation",
+    "created_at": "2019-02-15T10:40:28Z",
+    "updated_at": "2026-02-07T16:36:41Z",
+    "assignee": "keflavich",
+    "labels": [
+      "Feature Request",
+      "Docs",
+      "convolution",
+      "good first issue",
+      "Hacktoberfest"
+    ]
+  },
+  {
+    "number": 6390,
+    "title": "multiple functions from scipy.special do not work with quantities",
+    "created_at": "2017-07-24T18:18:02Z",
+    "updated_at": "2026-02-09T04:11:29Z",
+    "assignee": null,
+    "labels": [
+      "Feature Request",
+      "Docs",
+      "units",
+      "Effort-low",
+      "Package-novice",
+      "good first issue",
+      "Hacktoberfest"
+    ]
+  },
+  {
+    "number": 6038,
+    "title": "LinearLSQFitter cannot fit compound models",
+    "created_at": "2017-05-10T16:26:21Z",
+    "updated_at": "2026-02-09T04:11:56Z",
+    "assignee": null,
+    "labels": [
+      "Docs",
+      "Effort-low",
+      "modeling",
+      "Package-novice",
+      "good first issue"
+    ]
+  },
+  {
+    "number": 3744,
+    "title": "Reading and writing Excel spreadsheets in the unified table interface",
+    "created_at": "2015-04-29T21:41:09Z",
+    "updated_at": "2026-02-13T17:48:34Z",
+    "assignee": null,
+    "labels": [
+      "table",
+      "unified-io",
+      "Package-novice",
+      "Enhancement",
+      "good first issue"
+    ]
+  },
+  {
+    "number": 3028,
+    "title": "Allow tuples/iterables as convenience for setting contraints on model parameters",
+    "created_at": "2014-10-14T16:08:10Z",
+    "updated_at": "2026-02-13T17:54:21Z",
+    "assignee": "embray",
+    "labels": [
+      "Feature Request",
+      "Effort-low",
+      "modeling",
+      "Package-novice",
+      "good first issue"
+    ]
+  },
+  {
+    "number": 1803,
+    "title": "improve interpolation in IERS data",
+    "created_at": "2013-11-16T17:08:18Z",
+    "updated_at": "2026-02-13T17:54:51Z",
+    "assignee": null,
+    "labels": [
+      "Feature Request",
+      "time",
+      "Effort-low",
+      "Package-novice",
+      "good first issue"
+    ]
+  },
+  {
+    "number": 1012,
+    "title": "Add option to project `separation` onto an ellipse",
+    "created_at": "2013-04-23T15:52:09Z",
+    "updated_at": "2026-02-13T17:56:55Z",
+    "assignee": null,
+    "labels": [
+      "Feature Request",
+      "coordinates",
+      "Effort-low",
+      "Package-novice",
+      "good first issue"
+    ]
+  }
+]
