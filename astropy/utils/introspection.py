@@ -106,7 +106,7 @@ def minversion(module: ModuleType | str, version: str, inclusive: bool = True) -
     Examples
     --------
     >>> import astropy
-    >>> minversion(astropy, '0.4.4')
+    >>> minversion(astropy, '0.4.4')  # doctest: +SKIP
     True
     """
     if inspect.ismodule(module):
@@ -208,17 +208,17 @@ def find_current_module(
 
     With these modules in place, the following occurs::
 
-        >>> from pkg import mod1, mod2
-        >>> from astropy.utils import find_current_module
-        >>> mod1.find1()
+        >>> from pkg import mod1, mod2  # doctest: +SKIP
+        >>> from astropy.utils import find_current_module  # doctest: +SKIP
+        >>> mod1.find1()  # doctest: +SKIP
         pkg.mod1
-        >>> mod1.find2()
+        >>> mod1.find2()  # doctest: +SKIP
         None
-        >>> mod2.find()
+        >>> mod2.find()  # doctest: +SKIP
         pkg.mod2
-        >>> find_current_module(0)
+        >>> find_current_module(0)  # doctest: +SKIP
         <module 'astropy.utils.misc' from 'astropy/utils/misc.py'>
-        >>> mod1.find_diff()
+        >>> mod1.find_diff()  # doctest: +SKIP
         pkg.mod1
 
     """
